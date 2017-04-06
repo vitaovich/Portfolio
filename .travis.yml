@@ -17,3 +17,9 @@ install:
 script:
   - npm run lint
   - npm run test:once
+
+  deploy:
+    provider: script
+    script: scripts/deploy.sh
+    on:
+      branch: master
