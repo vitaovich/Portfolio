@@ -1,10 +1,10 @@
 #!/bin/bash
 set -x
 echo 'Starting deployment...'
-if [[ $# -eq 0 ]]; then
-    echo 'No arguments supplied Testing deployment'
+if [[ $TRAVIS_BRANCH -eq 'master' ]]; then
+    echo 'Deploying master branch'
     # Initialize a new git repo in _site, and push it to our server.
-    cd testfolder
+    cd deploymentFolder
     git init
 
     git remote add deploy "deploy@138.68.55.159:/var/repo/vitaovich/portfolio"
@@ -15,12 +15,6 @@ if [[ $# -eq 0 ]]; then
     git commit -m "Deploy"
     git push --force deploy master
     exit 1
-elif [[ $1 == "production" ]]; then
-    echo '-Production deployment selected-'
-
-elif [[ $1 == "development" ]]; then
-    echo '-Development deployment selected-'
-
 else
-    echo 'Invalid arguments supplied'
+    echo 'Deployment can''t happen unless branch is master. '
 fi
