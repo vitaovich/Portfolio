@@ -2,22 +2,24 @@ dist: trusty
 sudo: required
 language: node_js
 node_js:
-  - "5"
+- '5'
 os:
-  - linux
+- linux
 env:
   global:
-    - DBUS_SESSION_BUS_ADDRESS=/dev/null
-    - DISPLAY=:99.0
-    - CHROME_BIN=chromium-browser
+  - DBUS_SESSION_BUS_ADDRESS=/dev/null
+  - DISPLAY=:99.0
+  - CHROME_BIN=chromium-browser
 before_script:
-  - sh -e /etc/init.d/xvfb start
+- sh -e /etc/init.d/xvfb start
+before_install:
+- bash scripts/install.sh
 install:
-  - npm install
+- npm install
 script:
-  - npm run lint
-  - npm run test:once
-
+- npm run lint
+- npm run test:once
+- scripts/build.sh
 deploy:
   provider: script
   script: scripts/deploy.sh
