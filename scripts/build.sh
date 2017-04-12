@@ -1,3 +1,2 @@
 #!/bin/bash
-
-echo 'hello world' > testfolder/wtest.txt
+echo "Fake building..."
