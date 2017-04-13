@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 echo 'Starting deployment...'
-if [[ $TRAVIS_BRANCH -eq 'master' ]]; then
+if [ $TRAVIS_BRANCH -eq 'master' ]; then
     echo 'Deploying master branch'
     # Initialize a new git repo in _site, and push it to our server.
     cd deploymentFolder
