@@ -4,3 +4,4 @@ node_modules/
 !systemjs*
 !karma*
 *.log
+.vagrant
