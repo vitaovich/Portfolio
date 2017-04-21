@@ -1,0 +1,56 @@
+<div [hidden]="submitted" class="container">
+    <h1>Project Form</h1>
+    <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title"
+          required
+          [(ngModel)]="model.title" name="title"
+          #title="ngModel"
+          #spy>
+          <div [hidden]="title.valid || title.pristine"
+               class="alert alert-danger">
+            Title is required
+          </div>
+          <br>TODO: remove this: {{spy.className}}
+      </div>
+      <div class="form-group">
+        <label for="author">Authors</label>
+        <select class="form-control" id="author"
+            required
+            [(ngModel)]="model.author" name="author">
+          <option *ngFor="let author of authors" [value]="author">{{ author }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description"
+          required
+          [(ngModel)]="model.description" name="description">
+      </div>
+      <button type="submit" class="btn btn-success"
+        [disabled]="!projectForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="newProject();
+        projectForm.reset()">New Project</button>
+        <!-- TODO: remove this -->
+      <br> {{ diagnostic }}
+    </form>
+</div>
+
+<div [hidden]="!submitted" class="container">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Title</div>
+    <div class="col-xs-9  pull-left">{{ model.title }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Author</div>
+    <div class="col-xs-9 pull-left">{{ model.author }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Description</div>
+    <div class="col-xs-9 pull-left">{{ model.description }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>
