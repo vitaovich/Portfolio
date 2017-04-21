@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { LoggerService } from './logger.service';
+import { DebugService } from './debug.service';
+
 @Component({
   selector: 'my-app',
   template: `
@@ -11,10 +14,23 @@ import { Component } from '@angular/core';
       <a routerLink="/dashboard">Resume</a>
       <a href="https://github.com/vitaovich">Github</a>
       <a href="https://www.linkedin.com/in/vitaliy-alekhnovich">LinkedIn</a>
+      <button type="button"
+                    class="btn {{debug.isOn ? 'btn-success' : 'btn-danger'}}"
+                    (click)="debug.setDebugOn();">
+                    Debug: {{debug.isOn}}
+      </button>
     </nav>
     <router-outlet></router-outlet>
   `,
+  providers: [ LoggerService, DebugService ]
 })
 export class AppComponent  {
   name = 'Vitaliy\'s site.';
+
+  constructor(
+    private logger: LoggerService,
+    private debug: DebugService
+  ) {
+    logger.logInfo('AppComponent initialized.');
+  }
 }

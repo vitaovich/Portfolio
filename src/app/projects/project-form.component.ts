@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
 import { Project }    from './project';
+import { DebugService } from '../debug.service';
 
 @Component({
   selector: 'project-form',
   templateUrl: './project-form.component.html'
 })
 export class ProjectFormComponent {
+
+  constructor( private debug: DebugService) {}
 
   authors = ['Vitaliy Alekhnovich', 'Abe Lincoln' ];
 

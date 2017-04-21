@@ -32,8 +32,12 @@
         [disabled]="!projectForm.form.valid">Submit</button>
       <button type="button" class="btn btn-default" (click)="newProject();
         projectForm.reset()">New Project</button>
+
         <!-- TODO: remove this -->
-      <br> {{ diagnostic }}
+        <div  [hidden]="!debug.isOn" class="debug">
+          {{ diagnostic }}
+        </div>
+        <!-- TODO: remove this -->
     </form>
 </div>
 
