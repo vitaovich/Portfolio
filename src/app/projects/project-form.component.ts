@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Project }    from './project';
-import { DebugService } from '../debug.service';
+import { AppInfoService } from '../app-info.service';
 
 @Component({
   selector: 'project-form',
@@ -9,7 +9,7 @@ import { DebugService } from '../debug.service';
 })
 export class ProjectFormComponent {
 
-  constructor( private debug: DebugService) {}
+  constructor( private appinfo: AppInfoService) {}
 
   authors = ['Vitaliy Alekhnovich', 'Abe Lincoln' ];
 

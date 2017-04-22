@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class DebugService {
+export class AppInfoService {
   isOn: boolean = false;
 
-  setDebugOn() {
+  setInfoOn() {
     this.isOn = !this.isOn;
   }
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { LoggerService } from './logger.service';
-import { DebugService } from './debug.service';
+import { AppInfoService } from './app-info.service';
 
 @Component({
   selector: 'my-app',
@@ -15,21 +15,21 @@ import { DebugService } from './debug.service';
       <a href="https://github.com/vitaovich">Github</a>
       <a href="https://www.linkedin.com/in/vitaliy-alekhnovich">LinkedIn</a>
       <button type="button"
-                    class="btn {{debug.isOn ? 'btn-success' : 'btn-danger'}}"
-                    (click)="debug.setDebugOn();">
-                    Debug: {{debug.isOn}}
+                    class="btn {{appinfo.isOn ? 'btn-success' : 'btn-danger'}}"
+                    (click)="appinfo.setInfoOn();">
+                    More Info: {{appinfo.isOn ? 'On' : 'Off'}}
       </button>
     </nav>
     <router-outlet></router-outlet>
   `,
-  providers: [ LoggerService, DebugService ]
+  providers: [ LoggerService, AppInfoService ]
 })
 export class AppComponent  {
   name = 'Vitaliy\'s site.';
 
   constructor(
     private logger: LoggerService,
-    private debug: DebugService
+    private appinfo: AppInfoService
   ) {
     logger.logInfo('AppComponent initialized.');
   }
