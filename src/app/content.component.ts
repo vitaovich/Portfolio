@@ -13,8 +13,8 @@ import { AppInfoService } from './app-info.service';
 
 
 export class ContentComponent  {
-   //properties
-   //end properties
+   // properties
+   // end properties
 
    constructor(
      private logger: LoggerService,
