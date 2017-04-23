@@ -1,0 +1,43 @@
+<div [hidden]="submitted" class="container">
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <label>Title:</label>
+      <input class="form-control" formControlName="title">
+    </div>
+    <label>Content:</label>
+  <div  class="content" formArrayName="contents">
+    <div *ngFor="let content of contents.controls; let i=index" [formGroupName]="i" >
+    <!-- The repeated content template -->
+      <div class="form-group" [ngSwitch]="content.controls.type.value">
+        <label class="center-block">{{ content.controls.type.value | titlecase }}</label>
+          <textarea *ngSwitchCase="'text'"  class="form-control textarea" formControlName="details"></textarea>
+          <input *ngSwitchCase="'image'"  type="file" (change)="pictureAdded($event, i+1, content.controls.details)">
+          <img *ngSwitchCase="'image'" id="img_preview_{{i+1}}"/>
+      </div>
+    <!-- End of the repeated content template -->
+    </div>
+    <span>Add: </span>
+    <button (click)="addContentText()" type="button">Text</button>
+    <button (click)="addContentImage()" type="button">Image</button>
+  </div>
+  <button type="submit" class="btn btn-success"
+    [disabled]="projectForm.pristine">Submit</button>
+  </form>
+  <p>projectForm value: {{ projectForm.value | json}}</p>
+  <p>project value: {{ diagnostic }}</p>
+</div>
+
+<div [hidden]="!submitted" class="container">
+<!-- <div class="container"> -->
+  <h2>Preview post:</h2>
+  <div class="content">
+    <h2>{{ project.title }}</h2>
+    <div *ngFor="let content of project.contents;" [ngSwitch]="content.type">
+      <p *ngSwitchCase="'text'">{{content.details}}</p>
+      <p *ngSwitchCase="'image'">{{content.details}}</p>
+
+    </div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>
