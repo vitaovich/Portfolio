@@ -21,7 +21,6 @@ install:
 script:
 - npm run lint
 - npm run test:once
-- scripts/build.sh
 after_success:
 - bash scripts/deploy.sh
 notifications:

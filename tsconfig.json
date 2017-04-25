@@ -12,10 +12,7 @@
     "outDir": "out"
   },
   "include": [
-    "src/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
+    "src/*",
+    "src/**/*.spec.ts"
   ]
 }
