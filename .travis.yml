@@ -11,7 +11,7 @@ env:
   - DISPLAY=:99.0
   - CHROME_BIN=chromium-browser
 addons:
-  ssh_known_hosts: 138.68.55.159
+  ssh_known_hosts: vitoal.com
 before_script:
 - sh -e /etc/init.d/xvfb start
 before_install:

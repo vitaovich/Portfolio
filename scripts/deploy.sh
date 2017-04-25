@@ -24,7 +24,7 @@ if [[ $TRAVIS_BRANCH -eq 'master' ]]; then
     cd out
     git init
 
-    git remote add deploy "deploy@138.68.55.159:/var/repo/vitaovich/portfolio"
+    git remote add deploy "deploy@vitoal.com:/var/repo/vitaovich/portfolio"
     git config user.name "Travis CI"
     git config user.email "vitaliyalekhnovich@gmail.com"
 
