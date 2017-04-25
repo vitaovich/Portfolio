@@ -4,7 +4,7 @@ echo 'Starting deployment...'
 if [[ $TRAVIS_BRANCH -eq 'master' ]]; then
     echo 'Deploying master branch'
     # Initialize a new git repo in _site, and push it to our server.
-    cd deploymentFolder
+    cd out
     git init
 
     git remote add deploy "deploy@138.68.55.159:/var/repo/vitaovich/portfolio"
