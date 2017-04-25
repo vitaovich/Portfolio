@@ -1,5 +1,6 @@
 #!/bin/bash
 
+OUT_PATH='./out'
 # Remove test Files
 echo 'Removing spec files'
 spec_files=$( find ./out -type f | grep .spec.js )
