@@ -1,0 +1,64 @@
+
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" novalidate>
+    <div [hidden]="submitted" class="container">
+    <div class="form-group">
+      <label>Title:</label>
+      <input class="form-control" formControlName="title" placeholder="Title Name">
+    </div>
+    <div class="form-group">
+      <label>Icon:</label>
+      <input type="file"
+      (change)="pictureAdded($event, 0, icon)">
+      <div class="content">
+        <img id="img_preview_0"/>
+      </div>
+    </div>
+    <label>Content:</label>
+  <div  class="content" formArrayName="contents">
+    <div *ngFor="let content of contents.controls; let i=index" [formGroupName]="i" >
+    <!-- The repeated content template -->
+      <div class="form-group" [ngSwitch]="content.controls.controlType.value">
+        <label class="center-block">{{ content.controls.controlType.value | titlecase }}</label>
+          <textarea *ngSwitchCase="'text'"  class="form-control textarea" formControlName="details" placeholder="Paragraph info"></textarea>
+          <img *ngSwitchCase="'image'" id="img_preview_{{i+1}}"/>
+          <input *ngSwitchCase="'image'" type="file" (change)="pictureAdded($event, i+1, content.controls.details)">
+      </div>
+      <button (click)="removeContent(i)" type="button">X</button>
+    <!-- End of the repeated content template -->
+    </div>
+    <span>Add: </span>
+    <button (click)="addContentText()" type="button">Text</button>
+    <button (click)="addContentImage()" type="button">Image</button>
+  </div>
+  <br>
+  <button type="button" class="btn btn-success"
+    (click)="saveChanges()"
+    [disabled]="projectForm.pristine">Save</button>
+  </div>
+
+    <div [hidden]="!submitted" class="container">
+    <!-- <div class="container"> -->
+      <h2>Preview post:</h2>
+      <div class="content">
+        <h2>{{ newProject.title }}</h2>
+        <img id="icon" src="{{ newProject.icon.src }}"/>
+        <div *ngFor="let content of newProject.contents;" [ngSwitch]="content.controlType">
+          <p *ngSwitchCase="'text'">{{content.details}}</p>
+          <img *ngSwitchCase="'image'" src="{{content.details.src}}"/>
+
+        </div>
+      </div>
+      <br>
+      <button type="submit"
+          [disabled]="projectForm.pristine" class="btn btn-success">Submit</button>
+      <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+      <button type="reset" (click)="revert()"
+              [disabled]="projectForm.pristine" class="btn btn-danger">Revert</button>
+    </div>
+
+    <div [hidden]="!appinfo.isOn" class="container">
+      <p>Project Form: {{ projectForm.value | json}}</p>
+      <p>Project Model: {{ newDiagnostic }}</p>
+      <p>Project oldModel: {{ diagnostic }}</p>
+    </div>
+  </form>

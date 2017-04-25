@@ -1,0 +1,11 @@
+<h1>Projects page</h1>
+<a routerLink="/project/create">Create Project</a>
+
+<ul class="projects">
+  <li *ngFor="let project of projects">
+    <span class="badge">{{project.id}}</span>
+    <span>{{project | json }}</span>
+    <button class="delete"
+      (click)="delete(hero); $event.stopPropagation()">x</button>
+  </li>
+</ul>

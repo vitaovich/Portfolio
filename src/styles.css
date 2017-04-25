@@ -3,3 +3,10 @@ h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
+
+.more-info {
+    border: 3px solid red;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
