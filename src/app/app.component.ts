@@ -14,6 +14,9 @@ import { AppInfoService } from './app-info.service';
       <a routerLink="/dashboard">Resume</a>
       <a href="https://github.com/vitaovich">Github</a>
       <a href="https://www.linkedin.com/in/vitaliy-alekhnovich">LinkedIn</a>
+      <a href="https://travis-ci.org/vitaovich/Portfolio">
+        <img src="https://travis-ci.org/vitaovich/Portfolio.svg">
+      </a>
       <button type="button"
                     class="btn {{appinfo.isOn ? 'btn-success' : 'btn-danger'}}"
                     (click)="appinfo.setInfoOn();">

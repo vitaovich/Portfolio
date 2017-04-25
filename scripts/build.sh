@@ -16,7 +16,7 @@ find . -type f | grep .js | xargs -i cp {} ../$OUT_PATH --parents
 cd ..
 
 { echo 'COMPILING TypeScript USING'; tsc -v; }
-if [ '$1' == '-w' ]; then
+if [ "$1" == "-w" ]; then
   tsc -w
 else
   tsc --diagnostics --listEmittedFiles --listFiles
