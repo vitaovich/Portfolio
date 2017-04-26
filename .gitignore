@@ -1,8 +1,4 @@
-node_modules/
-*.js
-*.map
-!systemjs*
-!karma*
-*.log
 .vagrant
+node_modules/
 out/
+*.log
