@@ -54,13 +54,32 @@ this.post = function (req, res, next) {
 
 this.put = function(req, res, next) {
   console.log( 'Put project: ' + req.params.id );
-  Project.find({ '_id': req.params.id })
-  .populate('icon', '_id name')
+  Project.findOne({ '_id': req.params.id })
+  .populate('icon', '_id name details')
   .populate('contents', '_id name details')
   .exec(function ( err, project ) {
       if ( err ) return handleError( err, res );
+
+      project.title = req.body.title || project.title;
+      updateContent(project.icon, req.body.icon);
+
+      project.save( function ( err ) {
+        if ( err ) return handleError( err, res );
+      });
   });
+  res.send(200);
   return next();
+};
+
+function updateContent(oldContent, newContent) {
+  if(oldContent.name !== newContent.name) {
+    oldContent.name = newContent.name;
+    oldContent.src = newContent.src;
+  }
+  oldContent.details = newContent.details || oldContent.details;
+  oldContent.save( function(err) {
+    if ( err ) return handleError( err, res );
+  });
 };
 
 this.delete = function(req, res, next) {
@@ -76,4 +95,4 @@ function handleError(err, res) {
   res.send(404);
   console.log('\n\nFound error\n\n');
   console.log(err);
-}
+};
