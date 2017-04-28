@@ -1,46 +1,18 @@
 export class Project {
   constructor(
-    public id: number,
-    public title: string,
-    public icon: Image,
-    public contents: Content[]
+    public _id?: number,
+    public title?: string,
+    public icon?: Content,
+    public contents?: Content[]
   ) { }
 }
 
 export class Content  {
   constructor(
-    public controlType: string,
-    public details?: any
+    public _id?: string,
+    public name?: string,
+    public src?: string,
+    public details?: string
   ) {
-    this.details = details || '';
   }
 }
-
-export class ImageFile implements Image {
-  name: string;
-  src: string;
-  constructor(
-    public imageName?: string,
-    public source?: string
-  ) {
-    this.name = imageName;
-    this.src = source;
-  }
- }
-
-export class ImageForm implements Image {
-  name: string;
-  src: string;
-  constructor(
-    public imageName?: string,
-    public source?: string
-  ) {
-    this.name = imageName || '';
-    this.src = source || '';
-  }
- }
-
- interface Image {
-   name: string;
-   src: string;
- }

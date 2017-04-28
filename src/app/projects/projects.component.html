@@ -1,11 +1,19 @@
-<h1>Projects page</h1>
+<h1>Projects</h1>
 <a routerLink="/project/create">Create Project</a>
 
 <ul class="projects">
-  <li *ngFor="let project of projects">
-    <span class="badge">{{project.id}}</span>
-    <span>{{project | json }}</span>
+  <li *ngFor="let project of projects"
+  [class.selected]="project === selectedProject"
+   (click)="onSelect(project)" >
+    <span>Img: {{project.icon._id}}</span>
+    <span>{{project.title}}</span>
     <button class="delete"
       (click)="delete(hero); $event.stopPropagation()">x</button>
   </li>
 </ul>
+<div *ngIf="selectedProject">
+  <h2>
+    {{selectedProject.title | uppercase}} is my hero
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

@@ -7,7 +7,7 @@ import { Project } from './project';
 
 @Injectable()
 export class ProjectService {
-  private projectsUrl = 'api/projects';
+  private projectsUrl = 'http://localhost:8000/projects';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
@@ -15,7 +15,8 @@ export class ProjectService {
   getProjects(): Promise<Project[]> {
     return this.http.get(this.projectsUrl)
                 .toPromise()
-               .then(response => response.json().data as Project[])
+               .then(response => {
+                 return response.json() as Project[]})
                .catch(this.handleError);
   }
 
@@ -28,12 +29,14 @@ export class ProjectService {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Project)
+      .then(response => {
+        console.log(response.json());
+        return response.json() as Project})
       .catch(this.handleError);
   }
 
   update(project: Project): Promise<Project> {
-    const url = `${this.projectsUrl}/${project.id}`;
+    const url = `${this.projectsUrl}/${project._id}`;
     return this.http
       .put(url, JSON.stringify(project), {headers: this.headers})
       .toPromise()

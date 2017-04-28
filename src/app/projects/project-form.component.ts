@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
-import { Project, Content, ImageForm }    from './project';
+import { Project, Content }    from './project';
 import { AppInfoService } from '../app-info.service';
 import { ProjectService } from './project.service';
 
@@ -10,8 +10,8 @@ import { ProjectService } from './project.service';
   templateUrl: './project-form.component-v2.html'
 })
 export class ProjectFormComponent implements OnChanges {
-  @Input() project: Project = new Project(2, '', new ImageForm(), []);
-  newProject: Project = new Project(0, '', new ImageForm(), []);
+  @Input() project: Project = new Project();
+  newProject: Project = new Project();
   projectForm: FormGroup;
   submitted = false;
 
@@ -19,11 +19,8 @@ export class ProjectFormComponent implements OnChanges {
      this.createForm();
    }
 
-   addContentText() {
-     this.contents.push(this.fb.group(new Content( 'text' )));
-   }
-   addContentImage() {
-     this.contents.push(this.fb.group(new Content( 'image', new ImageForm())));
+   addContent() {
+     this.contents.push(this.fb.group(new Content( )));
    }
 
    removeContent(index: number) {
@@ -33,7 +30,7 @@ export class ProjectFormComponent implements OnChanges {
   createForm() {
     this.projectForm = this.fb.group({
       title: '',
-      icon: this.fb.group(new ImageForm()),
+      icon: this.fb.group(new Content()),
       contents: this.fb.array([]),
     });
   }
@@ -56,12 +53,11 @@ export class ProjectFormComponent implements OnChanges {
         let imgElement = document.getElementById('img_preview_' + id) as HTMLImageElement;
         imgElement.src = reader.result;
 
-        let img  = new ImageForm(file.name, reader.result);
+        let img  = new Content('', file.name, reader.result, imgFormGroup.get('details').value);
         imgFormGroup.setValue(img);
       };
       reader.readAsDataURL(file);
     } else {
-      imgFormGroup.setValue(new ImageForm('', ''));
       let imgElement = document.getElementById('img_preview_' + id) as HTMLImageElement;
       imgElement.src = '';
     }
@@ -101,9 +97,9 @@ export class ProjectFormComponent implements OnChanges {
     );
 
     const saveProject: Project = {
-      id: this.project.id,
+      _id: this.project._id,
       title: formModel.title as string,
-      icon: formModel.icon as ImageForm,
+      icon: formModel.icon as Content,
       contents: contentsDeepCopy
     };
     return saveProject;

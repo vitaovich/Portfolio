@@ -3,11 +3,12 @@ var Content = require('./models/content');
 
 this.get = function (req, res, next) {
   console.log('Get project: ' + req.params.id );
-  Project.find({ '_id': req.params.id })
+  Project.findOne({ '_id': req.params.id })
   .populate('icon', '_id name details')
   .populate('contents', '_id name details')
   .exec(function ( err, project ) {
       if ( err ) return handleError( err, res );
+      console.log(project);
       res.send( project );
   });
   return next();
