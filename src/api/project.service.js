@@ -1,53 +1,79 @@
 var Project = require('./models/project');
+var Content = require('./models/content');
 
 this.get = function (req, res, next) {
   console.log('Get project: ' + req.params.id );
-  Project.find({ 'id': req.params.id })
-  .populate('icon', '_id name')
-  .exec(function (err, project) {
-      if (err) return handleError(err);
-      res.send(project);
+  Project.find({ '_id': req.params.id })
+  .populate('icon', '_id name details')
+  .populate('contents', '_id name details')
+  .exec(function ( err, project ) {
+      if ( err ) return handleError( err, res );
+      res.send( project );
   });
   return next();
 };
 
 this.getAll = function (req, res, next) {
   console.log('Get all projects.');
-  res.send(200);
+  Project.find({})
+  .populate('icon', '_id name details')
+  .limit(100) // TODO: find better alternative other than hard coding limit
+  .exec( function(err, projects) {
+    if ( err ) return handleError( err, res );
+    res.send( projects );
+  });
   return next();
 };
 
 this.post = function (req, res, next) {
   console.log('Post a project.');
-  res.send(200);
+
+  var icon = new Content(req.body.icon);
+  icon.save(function ( err ) {
+    if ( err ) return handleError( err, res );
+
+  });
+
+  var project = new Project({ title: req.body.title, icon: icon._id});
+
+  req.body.contents.forEach(content => {
+    const contentModel = new Content(content);
+    contentModel.save( (err) =>{
+        if ( err ) return handleError( err, res );
+    });
+    project.contents.push(contentModel._id);
+  });
+
+  project.save( function ( err ) {
+    if ( err ) return handleError( err, res );
+  });
+
+  res.send(project);
   return next();
 };
 
 this.put = function(req, res, next) {
-  console.log('Put project: ' + req.params.id );
-  res.send(200);
+  console.log( 'Put project: ' + req.params.id );
+  Project.find({ '_id': req.params.id })
+  .populate('icon', '_id name')
+  .populate('contents', '_id name details')
+  .exec(function ( err, project ) {
+      if ( err ) return handleError( err, res );
+  });
   return next();
 };
 
 this.delete = function(req, res, next) {
-  console.log('Delete a project.');
-  res.send(200);
+  console.log( 'Delete project: ' + req.params.id );
+  Project.findByIdAndRemove( req.params.id, function (err, project) {
+    if ( err ) return handleError( err, res );
+    res.send(project);
+  });
   return next();
 };
 
-// TODO: Remove this function
-this.welcome = function (req, res, next) {
-  // res.send('Welcome to Portfolio REST API');
-  var image = new Image({
-    name: 'My silly image',
-    src: 'Image source data'
-  });
-  image.save(function (err) {
-    if (err) return handleError(err);
-  });
-  var project = new Project({title: 'MyImage', icon: image._id});
-  project.save(function (err) {
-    if (err) return handleError(err);
-  });
-  res.send(project);
+function handleError(err, res) {
+  res.send(404);
+  console.log('\n\nFound error\n\n');
+  console.log(err);
 }
