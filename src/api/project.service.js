@@ -63,6 +63,10 @@ this.put = function(req, res, next) {
       project.title = req.body.title || project.title;
       updateContent(project.icon, req.body.icon);
 
+      for( i = 0; i < project.contents.length; i++) {
+        updateContent(project.contents[i], req.body.contents[i]);
+      }
+
       project.save( function ( err ) {
         if ( err ) return handleError( err, res );
       });
