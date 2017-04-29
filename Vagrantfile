@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, path: "VagrantBootstrap_root.sh"
   config.vm.provision :shell, path: "VagrantBootstrap_defaultuser.sh", privileged: false
   config.vm.network :forwarded_port, guest: 3000, host: 4567
+  config.vm.network :forwarded_port, guest: 3001, host: 4568
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.

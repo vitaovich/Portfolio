@@ -1,5 +1,5 @@
 {
 	"dbPath": "mongodb://localhost:27017",
-	"port": 8000,
+	"port": 3001,
   "name": "Portfolio API"
 }
