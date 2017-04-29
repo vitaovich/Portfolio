@@ -1,6 +1,6 @@
 
   <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" novalidate>
-    <div [hidden]="submitted" class="container">
+    <div class="container">
 
     <div class="form-group">
       <label>Project Title</label>
@@ -36,6 +36,8 @@
       <button type="button" class="btn btn-success"
       (click)="saveChanges()"
       [disabled]="projectForm.pristine">Save</button>
+      <button type="submit"
+          [disabled]="projectForm.pristine" class="btn btn-success">Submit</button>
     </div>
 
   </form>
@@ -46,8 +48,7 @@
     <div class="content">
     </div>
     <br>
-    <button type="submit"
-        [disabled]="projectForm.pristine" class="btn btn-success">Submit</button>
+
     <button class="btn btn-primary" (click)="submitted=false">Edit</button>
     <button type="reset" (click)="revert()"
             [disabled]="projectForm.pristine" class="btn btn-danger">Revert</button>

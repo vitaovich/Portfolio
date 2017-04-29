@@ -9,7 +9,7 @@ export class Project {
 
 export class Content  {
   constructor(
-    public _id?: string,
+    public id?: string,
     public name?: string,
     public src?: string,
     public details?: string

@@ -2,11 +2,17 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
+var ContentSchema = new Schema({
+    name: {type: String, required: true, max: 100},
+    src: {type: String, required: true },
+    details: {type: String}
+});
+
 var ProjectSchema = Schema(
   {
     title: {type: String, required: true, max: 100},
-    icon: { type: Schema.Types.ObjectId, ref : 'Content' },
-    contents: [ {type: Schema.Types.ObjectId, ref: 'Content' } ]
+    icon: ContentSchema,
+    contents: [ContentSchema]
   }
 );
 

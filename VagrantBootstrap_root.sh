@@ -11,7 +11,7 @@ After=network.target
 
 [Service]
 User=mongodb
-ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
+ExecStart=/usr/bin/mongod --quiet --config /etc/mongodb.conf
 
 [Install]
 WantedBy=multi-user.target"

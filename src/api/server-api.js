@@ -1,27 +1,27 @@
-var restify = require('restify');
+var express = require('express');
+var bodyParser = require('body-parser');
+var cors = require('cors');
+var apiServer = express();
 var config = require('./config');
 var ProjectService = require('./project.service');
 
-var server = restify.createServer({
-  name: config.name,
+apiServer.use(bodyParser.json());
+apiServer.use(cors());
+apiServer.listen(config.port, function() {
+  console.log('Vitaliy\'s Portfolio api server listening on port ' + config.port);
 });
-
-server.use(restify.fullResponse());
-server.use(restify.bodyParser());
-server.use(restify.queryParser());
-
-server.listen(config.port, function() {
-  console.log('%s listening at %s', server.name, server.url);
+apiServer.get('/', function (req, res) {
+  res.send('Welcome to Vitaliy\'s Portfolio API!');
 });
-
-server.get('/projects/:id', ProjectService.get);
-server.get('/projects', ProjectService.getAll);
-server.post('/projects', ProjectService.post);
-server.put('/projects/:id', ProjectService.put);
-server.del('/projects/:id', ProjectService.delete);
+apiServer.get('/projects/:id', ProjectService.get);
+apiServer.get('/projects', ProjectService.getAll);
+apiServer.post('/projects', ProjectService.post);
+apiServer.put('/projects/:id', ProjectService.put);
+apiServer.del('/projects/:id', ProjectService.delete);
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 var mongoDB = 'mongodb://localhost:27017';
 mongoose.connect(mongoDB);
 var db = mongoose.connection;
