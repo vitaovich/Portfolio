@@ -93,7 +93,7 @@ export class ProjectFormComponent implements OnChanges {
     console.log('submitted changes');
     this.submitted = true;
     this.project = this.newProject;
-    this.projectService.update(this.newProject).then(projects => console.log(projects) );
+    this.projectService.create(this.newProject).then(projects => console.log(projects) );
   }
 
   prepareSaveProject(): Project {

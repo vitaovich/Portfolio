@@ -1,4 +1,5 @@
 var Project = require('./models/project');
+var config = require('./config');
 var fs = require('fs');
 
 this.get = function (req, res) {
@@ -42,13 +43,13 @@ this.post = function (req, res) {
   });
 
   var imageBuffer = decodeBase64Image(req.body.icon.src);
-  fs.writeFile('src/assets/' + req.body.icon.name, imageBuffer.data, err => {
+  fs.writeFile(config.assetsFolder + req.body.icon.name, imageBuffer.data, err => {
     if(err) return console.log(err);
   });
 
   req.body.contents.forEach(content => {
     var imageBuffer = decodeBase64Image(content.src);
-    fs.writeFile('src/assets/' + content.name, imageBuffer.data, err => {
+    fs.writeFile(config.assetsFolder  + content.name, imageBuffer.data, err => {
       if(err) return console.log(err);
     });
   });
@@ -65,13 +66,13 @@ this.put = function(req, res) {
   });
 
   var imageBuffer = decodeBase64Image(req.body.icon.src);
-  fs.writeFile('src/assets/' + req.body.icon.name, imageBuffer.data, err => {
+  fs.writeFile(config.assetsFolder + req.body.icon.name, imageBuffer.data, err => {
     if(err) return console.log(err);
   });
 
   req.body.contents.forEach(content => {
     var imageBuffer = decodeBase64Image(content.src);
-    fs.writeFile('src/assets/' + content.name, imageBuffer.data, err => {
+    fs.writeFile(config.assetsFolder + content.name, imageBuffer.data, err => {
       if(err) return console.log(err);
     });
   });
