@@ -34,4 +34,13 @@ export class ProjectsComponent {
   gotoDetail(): void {
     this.router.navigate(['/projects', this.selectedProject._id]);
   }
+
+  delete(project: Project): void {
+  this.projectService
+      .delete(project._id)
+      .then(() => {
+        this.projects = this.projects.filter(p => p !== project);
+        if (this.selectedProject === project) { this.selectedProject = null; }
+      });
+    }
 }

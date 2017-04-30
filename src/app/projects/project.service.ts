@@ -30,7 +30,6 @@ export class ProjectService {
     return this.http.get(url)
       .toPromise()
       .then(response => {
-        console.log(response.json());
         return response.json() as Project})
       .catch(this.handleError);
   }

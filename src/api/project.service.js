@@ -1,4 +1,5 @@
 var Project = require('./models/project');
+var fs = require('fs');
 
 this.get = function (req, res) {
   console.log('Get project: ' + req.params.id );
@@ -29,6 +30,19 @@ this.post = function (req, res) {
   project.save( err => {
     if ( err ) return handleError( err, res );
   });
+
+  var imageBuffer = decodeBase64Image(req.body.icon.src);
+  fs.writeFile('src/assets/' + req.body.icon.name, imageBuffer.data, err => {
+    if(err) return console.log(err);
+  });
+
+  req.body.contents.forEach(content => {
+    var imageBuffer = decodeBase64Image(content.src);
+    fs.writeFile('src/assets/' + content.name, imageBuffer.data, err => {
+      if(err) return console.log(err);
+    });
+  });
+
   res.send(project);
 };
 
@@ -54,3 +68,17 @@ function handleError(err, res) {
   console.log('\n\nFound error\n\n');
   console.log(err);
 };
+
+function decodeBase64Image(dataString) {
+  var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+    response = {};
+
+  if (matches.length !== 3) {
+    return new Error('Invalid input string');
+  }
+
+  response.type = matches[1];
+  response.data = new Buffer(matches[2], 'base64');
+
+  return response;
+}

@@ -1,0 +1,55 @@
+
+  <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" novalidate>
+    <div [hidden]="submitted">
+
+      <div class="form-group">
+        <label>Project Title</label>
+        <input class="form-control" formControlName="title" placeholder="Title Name">
+      </div>
+
+      <div class="form-group content" [formGroup]="icon">
+        <label>Icon</label>
+        <input type="file"
+          (change)="pictureAdded($event, 0, icon)">
+        <img id="img_preview_0"/>
+        <label>Details</label>
+        <textarea class="form-control textarea" formControlName="details" placeholder="Project description"></textarea>
+      </div>
+
+      <div  class="content" formArrayName="contents">
+      <label>Content</label>
+      <div *ngFor="let content of contents.controls; let i=index" [formGroupName]="i" >
+        <div class="form-group">
+          <label>Image</label>
+          <button (click)="removeContent(i)" type="button">X</button>
+          <input type="file" (change)="pictureAdded($event, i+1, content)">
+          <img id="img_preview_{{i+1}}"/>
+          <label>Details</label>
+          <textarea class="form-control textarea" formControlName="details" placeholder="Paragraph info"></textarea>
+        </div>
+      </div>
+      <button (click)="addContent()" type="button">Add</button>
+      </div>
+
+      <button type="button" class="btn btn-success"
+      (click)="saveChanges()"
+      [disabled]="projectForm.pristine">Save</button>
+
+    </div>
+
+
+    <div [hidden]="!submitted">
+      <h2>Preview Project</h2>
+      <div class="content">
+      </div>
+      <button type="submit"
+      [disabled]="projectForm.pristine" class="btn btn-success">Submit</button>
+      <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+      <button type="reset" (click)="revert()"
+      [disabled]="projectForm.pristine" class="btn btn-danger">Revert</button>
+    </div>
+  </form>
+
+  <p>Project Form: {{ projectForm.value | json}}</p>
+  <p>Project Model: {{ newDiagnostic }}</p>
+  <p>Project oldModel: {{ diagnostic }}</p>

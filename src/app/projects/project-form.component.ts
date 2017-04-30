@@ -7,11 +7,11 @@ import { ProjectService } from './project.service';
 
 @Component({
   selector: 'project-form',
-  templateUrl: './project-form.component-v2.html'
+  templateUrl: './project-form.component.html'
 })
 export class ProjectFormComponent implements OnChanges {
   @Input() project: Project = new Project();
-  newProject: Project = new Project();
+  newProject: Project;
   projectForm: FormGroup;
   submitted = false;
 
