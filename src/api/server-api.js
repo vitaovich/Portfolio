@@ -18,7 +18,7 @@ apiServer.get('/api/projectsfull/:id', ProjectService.getFull);
 apiServer.get('/api/projects', ProjectService.getAll);
 apiServer.post('/api/projects', ProjectService.post);
 apiServer.put('/api/projects/:id', ProjectService.put);
-apiServer.del('/api/projects/:id', ProjectService.delete);
+apiServer.delete('/api/projects/:id', ProjectService.delete);
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
