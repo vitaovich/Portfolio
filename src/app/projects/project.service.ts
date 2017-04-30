@@ -15,8 +15,7 @@ export class ProjectService {
   getProjects(): Promise<Project[]> {
     return this.http.get(this.projectsUrl)
                 .toPromise()
-               .then(response => {
-                 return response.json() as Project[]})
+               .then(response => response.json() as Project[])
                .catch(this.handleError);
   }
 
@@ -29,8 +28,7 @@ export class ProjectService {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => {
-        return response.json() as Project})
+      .then(response => response.json() as Project)
       .catch(this.handleError);
   }
 
@@ -38,8 +36,7 @@ export class ProjectService {
     const url = `${this.projectsUrl}full/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => {
-        return response.json() as Project})
+      .then(response => response.json() as Project)
       .catch(this.handleError);
   }
 
