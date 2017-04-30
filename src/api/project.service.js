@@ -12,6 +12,16 @@ this.get = function (req, res) {
   });
 };
 
+this.getFull = function (req, res) {
+  console.log('Get project: ' + req.params.id );
+  Project.findOne({ _id: req.params.id })
+  .exec(function ( err, project ) {
+      if ( err ) return handleError( err, res );
+      console.log(project);
+      res.send( project );
+  });
+};
+
 this.getAll = function (req, res) {
   console.log('Get all projects.');
   Project.find({})
@@ -52,6 +62,18 @@ this.put = function(req, res) {
   Project.findByIdAndUpdate(id, req.body, { new: true }, (err, project) => {
         if ( err ) return handleError( err, res );
         res.send(project);
+  });
+
+  var imageBuffer = decodeBase64Image(req.body.icon.src);
+  fs.writeFile('src/assets/' + req.body.icon.name, imageBuffer.data, err => {
+    if(err) return console.log(err);
+  });
+
+  req.body.contents.forEach(content => {
+    var imageBuffer = decodeBase64Image(content.src);
+    fs.writeFile('src/assets/' + content.name, imageBuffer.data, err => {
+      if(err) return console.log(err);
+    });
   });
 };
 

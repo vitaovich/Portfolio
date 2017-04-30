@@ -14,6 +14,7 @@ apiServer.get('/', function (req, res) {
   res.send('Welcome to Vitaliy\'s Portfolio API!');
 });
 apiServer.get('/projects/:id', ProjectService.get);
+apiServer.get('/projectsfull/:id', ProjectService.getFull);
 apiServer.get('/projects', ProjectService.getAll);
 apiServer.post('/projects', ProjectService.post);
 apiServer.put('/projects/:id', ProjectService.put);

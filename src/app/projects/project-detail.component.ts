@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { Location }  from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
@@ -18,6 +19,7 @@ export class ProjectDetailComponent implements OnInit {
   constructor(
     private projectService: ProjectService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
   ) {}
 
@@ -35,4 +37,9 @@ export class ProjectDetailComponent implements OnInit {
   this.projectService.update(this.project)
     .then(() => this.goBack());
   }
+
+  editProject(): void {
+    this.router.navigate(['/projects/edit', this.project._id]);
+  }
+
 }

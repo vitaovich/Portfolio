@@ -34,6 +34,15 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
+  getFullProject(id: number): Promise<Project> {
+    const url = `${this.projectsUrl}full/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => {
+        return response.json() as Project})
+      .catch(this.handleError);
+  }
+
   update(project: Project): Promise<Project> {
     const url = `${this.projectsUrl}/${project._id}`;
     return this.http
