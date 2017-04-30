@@ -10,15 +10,15 @@ apiServer.use(cors());
 apiServer.listen(config.port, function() {
   console.log('Vitaliy\'s Portfolio api server listening on port ' + config.port);
 });
-apiServer.get('/', function (req, res) {
+apiServer.get('/api/', function (req, res) {
   res.send('Welcome to Vitaliy\'s Portfolio API!');
 });
-apiServer.get('/projects/:id', ProjectService.get);
-apiServer.get('/projectsfull/:id', ProjectService.getFull);
-apiServer.get('/projects', ProjectService.getAll);
-apiServer.post('/projects', ProjectService.post);
-apiServer.put('/projects/:id', ProjectService.put);
-apiServer.del('/projects/:id', ProjectService.delete);
+apiServer.get('/api/projects/:id', ProjectService.get);
+apiServer.get('/api/projectsfull/:id', ProjectService.getFull);
+apiServer.get('/api/projects', ProjectService.getAll);
+apiServer.post('/api/projects', ProjectService.post);
+apiServer.put('/api/projects/:id', ProjectService.put);
+apiServer.del('/api/projects/:id', ProjectService.delete);
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
