@@ -11,7 +11,7 @@ import { AppInfoService } from './app-info.service';
       <span>{{ name }}</span>
       <a routerLink="/dashboard">Dashboard</a>
       <a routerLink="/projects">Projects</a>
-      <a routerLink="/dashboard">Resume</a>
+      <a href="/assets/vitaliy-alekhnovich-resume.pdf">Resume</a>
       <a href="https://github.com/vitaovich">Github</a>
       <a href="https://www.linkedin.com/in/vitaliy-alekhnovich">LinkedIn</a>
       <a href="https://travis-ci.org/vitaovich/Portfolio">

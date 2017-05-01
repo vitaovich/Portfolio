@@ -3,7 +3,7 @@
 
 <div *ngIf="selectedProject">
   <h2>{{selectedProject.title | uppercase}}</h2>
-  <img src="assets/{{selectedProject.icon.name}}">
+  <img src="assets/uploads/{{selectedProject.icon.name}}">
   <p>{{selectedProject.icon.details}}</p>
   <button (click)="gotoDetail()">More Details</button>
 </div>
@@ -12,7 +12,7 @@
   <li *ngFor="let project of projects"
   [class.selected]="project === selectedProject"
    (click)="onSelect(project)" >
-    <img src="assets/{{project.icon.name}}">
+    <img src="assets/uploads/{{project.icon.name}}">
     <span>{{project.title}}</span>
     <button class="delete"
       (click)="delete(project); $event.stopPropagation()">x</button>

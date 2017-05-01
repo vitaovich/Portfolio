@@ -2,5 +2,5 @@
 	"dbPath": "mongodb://localhost:27017",
 	"port": 3001,
   "name": "Portfolio API",
-	"assetsFolder": "assets/"
+	"assetsFolder": "assets/uploads/"
 }
