@@ -7,7 +7,7 @@ import { Project } from './project';
 
 @Injectable()
 export class ProjectService {
-  private projectsUrl = 'api/projects';
+  private projectsUrl = 'http://localhost:4568/projects';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
@@ -15,7 +15,8 @@ export class ProjectService {
   getProjects(): Promise<Project[]> {
     return this.http.get(this.projectsUrl)
                 .toPromise()
-               .then(response => response.json().data as Project[])
+               .then(response => {
+                 return response.json() as Project[]})
                .catch(this.handleError);
   }
 
@@ -28,12 +29,22 @@ export class ProjectService {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Project)
+      .then(response => {
+        return response.json() as Project})
+      .catch(this.handleError);
+  }
+
+  getFullProject(id: number): Promise<Project> {
+    const url = `${this.projectsUrl}full/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => {
+        return response.json() as Project})
       .catch(this.handleError);
   }
 
   update(project: Project): Promise<Project> {
-    const url = `${this.projectsUrl}/${project.id}`;
+    const url = `${this.projectsUrl}/${project._id}`;
     return this.http
       .put(url, JSON.stringify(project), {headers: this.headers})
       .toPromise()
@@ -41,9 +52,9 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Project> {
+  create(project: Project): Promise<Project> {
     return this.http
-      .post(this.projectsUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.projectsUrl, JSON.stringify(project), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as Project)
       .catch(this.handleError);

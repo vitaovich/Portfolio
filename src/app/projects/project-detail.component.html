@@ -1,0 +1,12 @@
+<div *ngIf="project">
+    <h2>{{project.title}}</h2>
+    <img src="assets/{{project.icon.name}}">
+    <p>{{project.icon.details}}</p>
+
+    <div *ngFor="let content of project.contents">
+        <img src="assets/{{content.name}}">
+        <p>{{content.details}}</p>
+    </div>
+
+    <button (click)="editProject()">Edit</button>
+</div>

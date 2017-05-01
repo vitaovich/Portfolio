@@ -12,6 +12,7 @@ import { ProjectService } from './project.service';
 
 export class ProjectsComponent {
   projects: Project[];
+  selectedProject: Project;
 
   constructor(
     private projectService: ProjectService,
@@ -25,4 +26,21 @@ export class ProjectsComponent {
   ngOnInit(): void {
     this.getProjects();
   }
+
+  onSelect(project: Project): void {
+    this.selectedProject = project;
+  }
+
+  gotoDetail(): void {
+    this.router.navigate(['/projects', this.selectedProject._id]);
+  }
+
+  delete(project: Project): void {
+  this.projectService
+      .delete(project._id)
+      .then(() => {
+        this.projects = this.projects.filter(p => p !== project);
+        if (this.selectedProject === project) { this.selectedProject = null; }
+      });
+    }
 }

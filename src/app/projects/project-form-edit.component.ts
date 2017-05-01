@@ -1,25 +1,25 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-
-import 'rxjs/add/operator/switchMap';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { Project, Content }    from './project';
 import { AppInfoService } from '../app-info.service';
 import { ProjectService } from './project.service';
 
 @Component({
-  selector: 'project-form',
+  selector: 'project-form-edit',
   templateUrl: './project-form.component.html'
 })
-export class ProjectFormComponent implements OnChanges {
+export class ProjectFormEditComponent implements OnChanges, OnInit {
   @Input() project: Project = new Project();
-  newProject: Project;
   projectForm: FormGroup;
+  newProject: Project;
   submitted = false;
 
   constructor(
     private fb: FormBuilder,
     private appinfo: AppInfoService,
+    private route: ActivatedRoute,
     private projectService: ProjectService ) {
      this.createForm();
    }
@@ -73,15 +73,22 @@ export class ProjectFormComponent implements OnChanges {
     this.newProject = this.prepareSaveProject();
   }
 
-
+  ngOnInit(): void {
+    this.route.params
+      .switchMap((params: Params) => this.projectService.getFullProject(params['id']))
+      .subscribe(project => {
+        this.project = project;
+        this.ngOnChanges();
+      });
+  }
 
   ngOnChanges() {
       // TODO: implement this
-      console.log(this.project);
       this.projectForm.reset({
         title: this.project.title,
-        icon: this.fb.group(this.project.icon)
       });
+      this.projectForm.setControl('icon', this.fb.group(this.project.icon));
+
       const contentsFGs = this.project.contents.map( content => this.fb.group(content));
       const contentsFormArray = this.fb.array(contentsFGs);
       this.projectForm.setControl('contents', contentsFormArray);
@@ -93,7 +100,8 @@ export class ProjectFormComponent implements OnChanges {
     console.log('submitted changes');
     this.submitted = true;
     this.project = this.newProject;
-    this.projectService.create(this.newProject).then(projects => console.log(projects) );
+    this.projectService.update(this.newProject).then(projects => console.log(projects) );
+    // this.ngOnChanges();
   }
 
   prepareSaveProject(): Project {

@@ -6,13 +6,15 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule }  from './app-routing.module';
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }  from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { ProjectDetailComponent } from './projects/project-detail.component';
 import { ProjectFormComponent } from './projects/project-form.component';
+import { ProjectFormEditComponent } from './projects/project-form-edit.component';
 import { ProjectService } from './projects/project.service';
 
 @NgModule({
@@ -22,13 +24,15 @@ import { ProjectService } from './projects/project.service';
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
     ProjectsComponent,
-    ProjectFormComponent
+    ProjectDetailComponent,
+    ProjectFormComponent,
+    ProjectFormEditComponent
   ],
   providers: [
     ProjectService
