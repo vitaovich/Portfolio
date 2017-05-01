@@ -1,0 +1,22 @@
+nav {
+  background: #24292e;
+  min-height: 36px;
+  color: white;
+  padding: 12px;
+}
+
+nav div a {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+nav div a:hover {
+  color: white;
+}
+
+.active-link {
+  color: red;
+}
