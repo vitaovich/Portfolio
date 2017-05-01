@@ -7,18 +7,24 @@ var ProjectService = require('./project.service');
 
 apiServer.use(bodyParser.json());
 apiServer.use(cors());
+
+var router = express.Router();
+
+router.get('/', function (req, res) {
+  res.send('Welcome to Vitaliy\'s Portfolio API!');
+});
+router.get('/projects/:id', ProjectService.get);
+router.get('/projectsfull/:id', ProjectService.getFull);
+router.get('/projects', ProjectService.getAll);
+router.post('/projects', ProjectService.post);
+router.put('/projects/:id', ProjectService.put);
+router.delete('/projects/:id', ProjectService.delete);
+
+apiServer.use('/api', router);
+
 apiServer.listen(config.port, function() {
   console.log('Vitaliy\'s Portfolio api server listening on port ' + config.port);
 });
-apiServer.get('/api/', function (req, res) {
-  res.send('Welcome to Vitaliy\'s Portfolio API!');
-});
-apiServer.get('/api/projects/:id', ProjectService.get);
-apiServer.get('/api/projectsfull/:id', ProjectService.getFull);
-apiServer.get('/api/projects', ProjectService.getAll);
-apiServer.post('/api/projects', ProjectService.post);
-apiServer.put('/api/projects/:id', ProjectService.put);
-apiServer.delete('/api/projects/:id', ProjectService.delete);
 
 //Set up mongoose connection
 var mongoose = require('mongoose');

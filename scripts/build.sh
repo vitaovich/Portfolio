@@ -3,15 +3,17 @@ echo 'Building Portfolio Web App'
 OUT_PATH='./out'
 SRC_PATH='./src'
 
-echo 'Removing previous build.'
-rm -r $OUT_PATH
-echo $1
-{ echo 'COMPILING TypeScript USING'; tsc -v; }
+
 if [ $1 = "-w" ];  then
+  tsc -w
+elif [ $1 = "-s" ]; then
+  echo 'Removing previous build.'
+  rm -r $OUT_PATH
   echo 'Linking source html, css, js, and ico files'
   ln -s $SRC_PATH $OUT_PATH
-  tsc -w
 else
+  echo 'Removing previous build.'
+  rm -r $OUT_PATH
   mkdir $OUT_PATH
   echo 'Copying source html, css, js, and ico files'
   cd $SRC_PATH
@@ -23,6 +25,7 @@ else
   find . -type f | grep .css | xargs -i cp {} ../$OUT_PATH --parents
   find . -type f | grep .js | xargs -i cp {} ../$OUT_PATH --parents
   cd ..
+  { echo 'COMPILING TypeScript USING'; tsc -v; }
   tsc --diagnostics --listEmittedFiles --listFiles
   echo 'FINISHED COMPILING.'
 fi
