@@ -3,8 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ContentSchema = new Schema({
-    name: {type: String, required: true, max: 100},
-    src: {type: String, required: true },
+    type: {type: String, required: true, max: 10},
     details: {type: String}
 });
 

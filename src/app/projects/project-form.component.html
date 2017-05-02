@@ -9,26 +9,20 @@
 
       <div class="form-group content" [formGroup]="icon">
         <label>Icon</label>
-        <input type="file"
-          (change)="pictureAdded($event, 0, icon)">
-        <img id="img_preview_0"/>
-        <label>Details</label>
-        <textarea class="form-control textarea" formControlName="details" placeholder="Project description"></textarea>
+        <input class="form-control" formControlName="details" placeholder="icon name">
       </div>
 
       <div  class="content" formArrayName="contents">
       <label>Content</label>
       <div *ngFor="let content of contents.controls; let i=index" [formGroupName]="i" >
         <div class="form-group">
-          <label>Image</label>
-          <button (click)="removeContent(i)" type="button">X</button>
-          <input type="file" (change)="pictureAdded($event, i+1, content)">
-          <img id="img_preview_{{i+1}}"/>
-          <label>Details</label>
+          <label>{{content.controls.type.value | titlecase}}</label>
           <textarea class="form-control textarea" formControlName="details" placeholder="Paragraph info"></textarea>
+          <button (click)="removeContent(i)" type="button">X</button>
         </div>
       </div>
-      <button (click)="addContent()" type="button">Add</button>
+      <button (click)="addContent('img')" type="button">img</button>
+      <button (click)="addContent('text')" type="button">text</button>
       </div>
 
       <button type="button" class="btn btn-success"

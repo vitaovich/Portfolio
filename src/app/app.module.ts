@@ -14,7 +14,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectDetailComponent } from './projects/project-detail.component';
 import { ProjectFormComponent } from './projects/project-form.component';
-import { ProjectFormEditComponent } from './projects/project-form-edit.component';
 import { ProjectService } from './projects/project.service';
 
 @NgModule({
@@ -32,7 +31,6 @@ import { ProjectService } from './projects/project.service';
     ProjectsComponent,
     ProjectDetailComponent,
     ProjectFormComponent,
-    ProjectFormEditComponent
   ],
   providers: [
     ProjectService

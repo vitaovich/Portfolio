@@ -1,10 +1,10 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Project } from './projects/project';
+import { Project, Content } from './projects/project';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     let projects = [
-      new Project(1, 'Portfolio')
+      new Project( 'Portfolio', new Content('img', 'angular_logo.png') )
     ];
     return {projects};
   }

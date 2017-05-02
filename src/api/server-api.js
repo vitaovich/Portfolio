@@ -14,7 +14,6 @@ router.get('/', function (req, res) {
   res.send('Welcome to Vitaliy\'s Portfolio API!');
 });
 router.get('/projects/:id', ProjectService.get);
-router.get('/projectsfull/:id', ProjectService.getFull);
 router.get('/projects', ProjectService.getAll);
 router.post('/projects', ProjectService.post);
 router.put('/projects/:id', ProjectService.put);

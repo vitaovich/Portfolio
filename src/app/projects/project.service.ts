@@ -7,7 +7,8 @@ import { Project } from './project';
 
 @Injectable()
 export class ProjectService {
-  private projectsUrl = '/api/projects';
+  // private projectsUrl = '/api/projects';
+  private projectsUrl = 'http://localhost:4568/api/projects';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
@@ -26,14 +27,6 @@ export class ProjectService {
 
   getProject(id: number): Promise<Project> {
     const url = `${this.projectsUrl}/${id}`;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as Project)
-      .catch(this.handleError);
-  }
-
-  getFullProject(id: number): Promise<Project> {
-    const url = `${this.projectsUrl}full/${id}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Project)
@@ -64,5 +57,4 @@ export class ProjectService {
       .then(() => null)
       .catch(this.handleError);
   }
-
 }

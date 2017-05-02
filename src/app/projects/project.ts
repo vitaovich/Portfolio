@@ -1,18 +1,16 @@
 export class Project {
   constructor(
-    public _id?: number,
     public title?: string,
     public icon?: Content,
-    public contents?: Content[]
+    public contents?: Content[],
+    public _id?: number,
   ) { }
 }
 
 export class Content  {
   constructor(
-    public id?: string,
-    public name?: string,
-    public src?: string,
-    public details?: string
+    public type: string,
+    public details = '',
   ) {
   }
 }
