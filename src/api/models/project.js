@@ -11,6 +11,7 @@ var ProjectSchema = Schema(
   {
     title: {type: String, required: true, max: 100},
     icon: ContentSchema,
+    description: {type: String},
     contents: [ContentSchema]
   }
 );

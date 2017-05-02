@@ -1,0 +1,54 @@
+img {
+  width: 100%
+}
+
+.project {
+  border: 3px solid black;
+  border-radius: 3px;
+  background: grey;
+  margin: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.project-details {
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+div .project:hover {
+  background: grey !important;
+}
+
+div.project img:hover {
+  opacity: 0.5;
+}
+
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+
+.selected img {
+  opacity: 0.5;
+}
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.top-right {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 5px;
+  left: 12px;
+  color: white;
+  font-weight: 600;
+}

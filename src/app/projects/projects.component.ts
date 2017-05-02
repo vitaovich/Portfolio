@@ -7,6 +7,7 @@ import { ProjectService } from './project.service';
 @Component({
   selector: 'projects',
   templateUrl: './projects.component.html',
+  styleUrls: [ './projects.component.css' ],
 })
 
 
@@ -33,6 +34,10 @@ export class ProjectsComponent {
 
   gotoDetail(): void {
     this.router.navigate(['/projects', this.selectedProject._id]);
+  }
+
+  clearSelected(): void {
+    this.selectedProject = null;
   }
 
   delete(project: Project): void {

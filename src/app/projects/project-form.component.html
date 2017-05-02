@@ -7,9 +7,15 @@
         <input class="form-control" formControlName="title" placeholder="Title Name">
       </div>
 
+
       <div class="form-group content" [formGroup]="icon">
         <label>Icon</label>
         <input class="form-control" formControlName="details" placeholder="icon name">
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control textarea" formControlName="description" placeholder="Project Description"></textarea>
       </div>
 
       <div  class="content" formArrayName="contents">

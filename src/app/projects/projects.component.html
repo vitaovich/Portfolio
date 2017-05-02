@@ -1,19 +1,33 @@
-<h1>Projects</h1>
-<a routerLink="/project/create">Create Project</a>
+<div class="container">
+  <h1>Projects</h1>
+  <a class="btn-green" routerLink="/project/create">Create Project</a>
 
-<div *ngIf="selectedProject">
-  <h2>{{selectedProject.title | uppercase}}</h2>
-  <img src="assets/img/{{selectedProject.icon.details}}">
-  <button (click)="gotoDetail()">More Details</button>
+  <div *ngIf="selectedProject" class="project-details">
+    <h1 class="bold">{{selectedProject.title | uppercase}}</h1>
+    <div class="row">
+        <div class="col-md-6">
+          <img src="assets/img/{{selectedProject.icon.details}}">
+        </div>
+        <div class="col-md-6">
+          <p>{{selectedProject.description}}</p>
+        </div>
+    </div>
+    <button (click)="clearSelected()" class="btn-yellow"><i class="fa fa-window-minimize" aria-hidden="true"></i></button>
+    <button (click)="gotoDetail()" class="btn-green bold">More Details</button>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let project of projects"
+     (click)="onSelect(project)"
+     class="col-md-4 col-sm-6  nopadding ">
+      <div class="project"
+          [class.selected]="project === selectedProject">
+        <img src="assets/img/{{project.icon.details}}">
+        <button class="top-right btn-red round"
+          (click)="delete(project); $event.stopPropagation()"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <p class="bottom-left">{{project.title}}</p>
+      </div>
+    </div>
+  </div>
+
 </div>
-
-<ul class="projects">
-  <li *ngFor="let project of projects"
-  [class.selected]="project === selectedProject"
-   (click)="onSelect(project)" >
-    <img src="assets/img/{{project.icon.details}}">
-    <span>{{project.title}}</span>
-    <button class="delete"
-      (click)="delete(project); $event.stopPropagation()">x</button>
-  </li>
-</ul>

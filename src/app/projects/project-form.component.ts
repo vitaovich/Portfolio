@@ -34,6 +34,7 @@ export class ProjectFormComponent implements OnChanges {
     this.projectForm = this.fb.group({
       title: '',
       icon: this.fb.group(new Content('img')),
+      description: '',
       contents: this.fb.array([]),
     });
   }
@@ -55,6 +56,7 @@ export class ProjectFormComponent implements OnChanges {
       console.log(this.project);
       this.projectForm.reset({
         title: this.project.title,
+        description: this.project.description
       });
       this.projectForm.setControl('icon', this.fb.group(this.project.icon));
       const contentsFGs = this.project.contents.map( content => this.fb.group(content));
@@ -85,6 +87,7 @@ export class ProjectFormComponent implements OnChanges {
     const saveProject: Project = {
       _id: this.project._id,
       title: formModel.title as string,
+      description: formModel.description as string,
       icon: formModel.icon as Content,
       contents: contentsDeepCopy
     };
