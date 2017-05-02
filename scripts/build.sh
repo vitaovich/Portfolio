@@ -27,6 +27,6 @@ else
   cp -R ./assets ../$OUT_PATH/
   cd ..
   { echo 'COMPILING TypeScript USING'; tsc -v; }
-  # tsc --diagnostics --listEmittedFiles
+  tsc --diagnostics --listEmittedFiles
   echo 'FINISHED COMPILING.'
 fi
