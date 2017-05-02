@@ -1,0 +1,31 @@
+<nav class="container-fluid">
+
+  <div class="col-xs-6 col-sm-4">
+    <span class="brand">{{ name }}</span>
+  </div>
+
+  <div class="col-xs-6 col-sm-4 text-align-center text-nowrap">
+    <a routerLink="/dashboard" routerLinkActive="active-link">Dashboard</a>
+    <a routerLink="/projects" routerLinkActive="active-link">Projects</a>
+    <a href="/assets/vitaliy-alekhnovich-resume.pdf">Resume</a>
+  </div>
+
+  <div class="col-xs-6 col-sm-4 text-align-right text-nowrap">
+    <a class="nav-link" href="https://github.com/vitaovich">
+      <i class="fa fa-github" aria-hidden="true"></i> Github
+    </a>
+    <a href="https://www.linkedin.com/in/vitaliy-alekhnovich">
+      <i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+    </a>
+    <a href="https://travis-ci.org/vitaovich/Portfolio">
+      <img src="https://travis-ci.org/vitaovich/Portfolio.svg">
+    </a>
+  </div>
+
+</nav>
+<button type="button"
+              class="btn {{appinfo.isOn ? 'btn-success' : 'btn-danger'}}"
+              (click)="appinfo.setInfoOn();">
+              More Info: {{appinfo.isOn ? 'On' : 'Off'}}
+</button>
+<router-outlet></router-outlet>
