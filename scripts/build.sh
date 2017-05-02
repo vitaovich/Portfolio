@@ -24,8 +24,9 @@ else
   find . -type f | grep .html | xargs -i cp {} ../$OUT_PATH --parents
   find . -type f | grep .css | xargs -i cp {} ../$OUT_PATH --parents
   find . -type f | grep .js | xargs -i cp {} ../$OUT_PATH --parents
+  cp -R ./assets ../$OUT_PATH/
   cd ..
   { echo 'COMPILING TypeScript USING'; tsc -v; }
-  tsc --diagnostics --listEmittedFiles --listFiles
+  # tsc --diagnostics --listEmittedFiles
   echo 'FINISHED COMPILING.'
 fi
