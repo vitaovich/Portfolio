@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
 
-@Component({
-  selector: 'my-dashboard',
-  templateUrl: './dashboard/dashboard.component.html',
-  styleUrls: ['./dashboard/dashboard.component.css'],
-})
-export class DashboardComponent implements OnInit {
-  constructor(private heroService: HeroService) { }
+:host {
+  display: block;
+  border: 2px solid #0B132B;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #1C2541;
+  margin: 10px;
+}
 
-  ngOnInit(): void {
-    this.heroService.getHeroes()
-      .then(heroes => this.heroes = heroes.slice( 1, 5 ));
-  }
- }
+h1 {
+  color: rgba(255, 255, 255, 0.75);
+}

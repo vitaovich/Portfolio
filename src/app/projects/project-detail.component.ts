@@ -11,7 +11,7 @@ import { Project } from './project';
 @Component({
   selector: 'project-detail',
   templateUrl: './project-detail.component.html',
-  // styleUrls: [ './hero-detail.component.css' ]
+  styleUrls: [ './project-detail.component.css' ],
 })
 
 export class ProjectDetailComponent implements OnInit {

@@ -19,31 +19,39 @@ h1 {
 
 .btn-red {
   background-color: #fc5752;
-  border: 2px solid #df4744;
+  border: 3px solid #df4744;
   text-align: center;
   color: #7e0508;
   display: inline-block;
+  padding: 5px 10px;
 }
 
 .btn-yellow {
   background-color: #fdbc40;
-  border: 2px solid #de9f34;
+  border: 3px solid #de9f34;
   text-align: center;
   color: #985712;
   display: inline-block;
+  padding: 5px 10px;
+
 }
 .btn-green {
   background-color: #33c748;
-  border: 2px solid #27aa35;
+  border: 3px solid #27aa35;
   text-align: center;
   color: #0b650d;
   display: inline-block;
+  padding: 3px 7px;
 }
 
 .round {
-  border-radius: 50%;
+  border-radius: 5px;
 }
 
 .bold {
   font-weight: bolder;
+}
+
+body {
+  background-image: url("assets/img/background.png");
 }

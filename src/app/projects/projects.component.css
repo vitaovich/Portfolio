@@ -4,13 +4,14 @@ img {
 
 .project {
   border: 3px solid black;
-  border-radius: 3px;
+  border-radius: 5px;
   background: grey;
   margin: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .project-details {
+  background-color: white;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
   border-radius: 10px;
@@ -51,4 +52,20 @@ div.project img:hover {
   left: 12px;
   color: white;
   font-weight: 600;
+}
+
+.details-divide {
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-radius: 10px;
+  min-height: 250px;
+}
+
+:host {
+  display: block;
+  border-radius: 5px;
+  border: 2px solid #5BC0BE;
+  padding: 10px;
+  background-color: #6FFFE9;
+  margin: 10px;
 }

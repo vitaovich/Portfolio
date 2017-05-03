@@ -16,6 +16,7 @@ import { ProjectDetailComponent } from './projects/project-detail.component';
 import { ProjectFormComponent } from './projects/project-form.component';
 import { ProjectService } from './projects/project.service';
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -33,7 +34,7 @@ import { ProjectService } from './projects/project.service';
     ProjectFormComponent,
   ],
   providers: [
-    ProjectService
+    ProjectService,
   ],
   bootstrap: [
     AppComponent
