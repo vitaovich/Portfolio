@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
+const config = require('../../app.config.js');
+
 import 'rxjs/add/operator/toPromise';
 
 import { Project } from './project';
 
 @Injectable()
 export class ProjectService {
-  // private projectsUrl = '/api/projects';
-  private projectsUrl = 'http://localhost:4568/api/projects';
+  private projectsUrl = config.apiUrl;
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
@@ -50,7 +51,7 @@ export class ProjectService {
       .catch(this.handleError);
   }
 
-  delete(id: number): Promise<void> {
+  delete(id: string): Promise<void> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
