@@ -1,6 +1,5 @@
 h1 {
-  /*background-color: #0B132B;*/
-  background-color: #f2f1f0;;
+  background-color: #f2f1f0;
   padding: 12px;
   border-bottom: 1px  solid #182240;
   border-top: 1px  solid #182240;
@@ -11,7 +10,7 @@ h1 {
 p {
   font-size: 18px;
   font-weight: 400;
-  color: black;
+  color: #182240;
 }
 
 .text-align-center {

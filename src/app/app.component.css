@@ -1,7 +1,7 @@
 nav {
   background: #0B132B;
   min-height: 36px;
-  color: white;
+  color: #f2f1f0;
   padding: 12px;
 }
 
@@ -14,7 +14,7 @@ nav div a {
 }
 
 nav div a:hover {
-  color: white;
+  color: #f2f1f0;
 }
 
 .active-link {

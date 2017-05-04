@@ -15,9 +15,9 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProjectDetailComponent } from './projects/project-detail.component';
 import { ProjectFormComponent } from './projects/project-form.component';
 import { ProjectService } from './projects/project.service';
+import { AboutComponent } from './about/about.component';
 
-const config = require('../app.config.js')
-
+const config = require('../app.config.js');
 if (config.productionMode) {
   enableProdMode();
 }
@@ -37,6 +37,7 @@ if (config.productionMode) {
     ProjectsComponent,
     ProjectDetailComponent,
     ProjectFormComponent,
+    AboutComponent
   ],
   providers: [
     ProjectService,

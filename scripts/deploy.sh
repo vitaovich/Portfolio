@@ -15,6 +15,8 @@ echo 'index.html replaced references'
 sed -i 's|node_modules|https://unpkg.com|g' $OUT_PATH/systemjs.config.js
 echo 'systemjs.config.js replaced references'
 sed -i 's|http://localhost:4568/api/projects|/api/projects|g' $OUT_PATH/app.config.js
+sed -i 's|false|true|g' $OUT_PATH/app.config.js
+
 
 # Deploy everything to remote git repo
 set -x
