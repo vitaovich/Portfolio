@@ -2,9 +2,16 @@ h1 {
   /*background-color: #0B132B;*/
   background-color: #f2f1f0;;
   padding: 12px;
-  border-bottom: 1px  solid #0B132B;;
-  border-top: 1px  solid #0B132B;;
+  border-bottom: 1px  solid #182240;
+  border-top: 1px  solid #182240;
   margin: 10px;
+  color: #283354 !important;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 400;
+  color: black;
 }
 
 .text-align-center {
@@ -57,4 +64,9 @@ h1 {
 
 body {
   background-image: url("assets/img/background.png");
+}
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
 }

@@ -3,23 +3,23 @@ img {
 }
 
 .project {
-  border: 3px solid #0B132B;;
+  border: 3px solid #01040E;
   border-radius: 5px;
-  background: grey;
+  background: #A4ABC0;
   margin: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .project-details {
-  background-color: #e6e2dd;;
-  border-top: 3px solid #0B132B;;
-  border-bottom: 3px solid #0B132B;;
+  background-color: #e6e2dd;
+  border-top: 3px solid #182240;
+  border-bottom: 3px solid #182240;
   border-radius: 10px;
   padding: 10px 20px;
 }
 
 div .project:hover {
-  background: grey !important;
+  background: #EBECF0 !important;
 }
 
 div.project img:hover {
@@ -28,6 +28,7 @@ div.project img:hover {
 
 .selected {
   background-color: #CFD8DC !important;
+  border: 3px dashed #182240;
   color: white;
 }
 
@@ -35,10 +36,7 @@ div.project img:hover {
   opacity: 0.5;
 }
 
-.nopadding {
-  padding: 0 !important;
-  margin: 0 !important;
-}
+
 
 .top-right {
   position: absolute;
@@ -50,21 +48,19 @@ div.project img:hover {
   position: absolute;
   bottom: 5px;
   left: 12px;
-  color: white;
-  font-weight: 600;
 }
 
 .details-divide {
-  border-left: 3px solid black;
-  border-right: 3px solid black;
+  border-left: 3px solid #182240;
+  border-right: 3px solid #182240;
   border-radius: 10px;
   min-height: 250px;
 }
 
 :host {
   display: block;
-  border-top: 5px solid #0B132B;;
-  border-bottom: 5px solid #0B132B;;
+  border-top: 5px solid #182240;
+  border-bottom: 5px solid #182240;
   padding: 10px;
   background-color: #f2f1f0;;
   margin-bottom: 50px;

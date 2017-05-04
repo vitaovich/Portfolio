@@ -1,7 +1,7 @@
 <div class="container">
-  <h1>Projects</h1>
+  <h1 class="bold">Projects</h1>
   <div *ngIf="selectedProject" class="project-details">
-    <h1 class="bold">{{selectedProject.title | uppercase}}</h1>
+    <h1>{{selectedProject.title | uppercase}}</h1>
     <div class="row">
         <div class="col-md-6 ">
           <img src="assets/img/{{selectedProject.icon.details}}">
@@ -13,7 +13,7 @@
     </div>
     <div class="text-align-right">
       <button (click)="clearSelected()" class="btn-yellow round"><i class="fa fa-window-minimize" aria-hidden="true"></i></button>
-      <button (click)="gotoDetail()" class="btn-green bold round">More Details</button>
+      <!-- <button (click)="gotoDetail()" class="btn-green bold round">More Details</button> -->
     </div>
   </div>
 
@@ -29,6 +29,6 @@
       </div>
     </div>
   </div>
-    <a class="btn-green bold round" routerLink="/project/create">Create Project</a>
+    <!-- <a class="btn-green bold round" routerLink="/project/create">Create Project</a> -->
 
 </div>

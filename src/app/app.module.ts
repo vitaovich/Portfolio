@@ -1,4 +1,4 @@
-import { NgModule }      from '@angular/core';
+import { NgModule, enableProdMode }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -16,6 +16,11 @@ import { ProjectDetailComponent } from './projects/project-detail.component';
 import { ProjectFormComponent } from './projects/project-form.component';
 import { ProjectService } from './projects/project.service';
 
+const config = require('../app.config.js')
+
+if (config.productionMode) {
+  enableProdMode();
+}
 
 @NgModule({
   imports: [
