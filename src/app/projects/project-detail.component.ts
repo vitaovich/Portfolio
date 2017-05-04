@@ -4,7 +4,6 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location }  from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
-import { ProjectFormComponent } from './project-form.component';
 import { ProjectService } from './project.service';
 import { Project } from './project';
 

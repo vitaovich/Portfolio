@@ -7,8 +7,8 @@ import { Project } from './project';
 
 @Injectable()
 export class ProjectService {
-  private projectsUrl = '/api/projects';
-  // private projectsUrl = 'http://localhost:4568/api/projects';
+  // private projectsUrl = '/api/projects';
+  private projectsUrl = 'http://localhost:4568/api/projects';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }

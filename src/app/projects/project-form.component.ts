@@ -8,7 +8,8 @@ import { ProjectService } from './project.service';
 
 @Component({
   selector: 'project-form',
-  templateUrl: './project-form.component.html'
+  templateUrl: './project-form.component.html',
+  styleUrls: [ './project-detail.component.css' ],
 })
 export class ProjectFormComponent implements OnChanges {
   @Input() project: Project = new Project();

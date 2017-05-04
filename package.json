@@ -20,7 +20,8 @@
     "test:once": "karma start karma.conf.js --single-run",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "api": "cd out && node api/server-api.js",
-    "link": "scripts/build.sh -s"
+    "link": "scripts/build.sh -s",
+    "seed": "mongoimport --db test --collection projects --drop --file src/api/data.json --jsonArray"
   },
   "keywords": [],
   "author": "",

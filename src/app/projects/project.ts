@@ -4,7 +4,7 @@ export class Project {
     public icon?: Content,
     public description?: string,
     public contents?: Content[],
-    public _id?: number,
+    public _id?: string,
   ) { }
 }
 
