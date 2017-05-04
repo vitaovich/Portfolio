@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <h1>Projects</h1>
   <div *ngIf="selectedProject" class="project-details">
     <h1 class="bold">{{selectedProject.title | uppercase}}</h1>
@@ -24,8 +24,7 @@
       <div class="project"
           [class.selected]="project === selectedProject">
         <img src="assets/img/{{project.icon.details}}">
-        <button class="top-right btn-red round"
-          (click)="delete(project); $event.stopPropagation()"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <!-- <button class="top-right btn-red round" (click)="delete(project); $event.stopPropagation()"><i class="fa fa-times" aria-hidden="true"></i></button> -->
         <p class="bottom-left">{{project.title}}</p>
       </div>
     </div>

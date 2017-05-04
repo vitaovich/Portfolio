@@ -1,7 +1,10 @@
 h1 {
-  color: #369;
-  font-family: sans-serif;
-  font-size: 250%;
+  /*background-color: #0B132B;*/
+  background-color: #f2f1f0;;
+  padding: 12px;
+  border-bottom: 1px  solid #0B132B;;
+  border-top: 1px  solid #0B132B;;
+  margin: 10px;
 }
 
 .text-align-center {

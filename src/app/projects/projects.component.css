@@ -3,7 +3,7 @@ img {
 }
 
 .project {
-  border: 3px solid black;
+  border: 3px solid #0B132B;;
   border-radius: 5px;
   background: grey;
   margin: 5px;
@@ -11,9 +11,9 @@ img {
 }
 
 .project-details {
-  background-color: white;
-  border-top: 3px solid black;
-  border-bottom: 3px solid black;
+  background-color: #e6e2dd;;
+  border-top: 3px solid #0B132B;;
+  border-bottom: 3px solid #0B132B;;
   border-radius: 10px;
   padding: 10px 20px;
 }
@@ -63,9 +63,9 @@ div.project img:hover {
 
 :host {
   display: block;
-  border-radius: 5px;
-  border: 2px solid #5BC0BE;
+  border-top: 5px solid #0B132B;;
+  border-bottom: 5px solid #0B132B;;
   padding: 10px;
-  background-color: #6FFFE9;
-  margin: 10px;
+  background-color: #f2f1f0;;
+  margin-bottom: 50px;
 }
