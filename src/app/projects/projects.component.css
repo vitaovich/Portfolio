@@ -5,7 +5,7 @@ img {
 .project {
   border: 3px solid #182240;
   border-radius: 5px;
-  background: #A4ABC0;
+  background: #e6e2dd;
   margin: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -19,7 +19,7 @@ img {
 }
 
 div .project:hover {
-  background: #EBECF0 !important;
+  background: #f2f1f0 !important;
 }
 
 div.project img:hover {
@@ -27,9 +27,8 @@ div.project img:hover {
 }
 
 .selected {
-  background-color: #CFD8DC !important;
+  background-color: #f2f1f0 !important;
   border: 3px dashed #182240;
-  color: white;
 }
 
 .selected img {
@@ -45,9 +44,7 @@ div.project img:hover {
 }
 
 .bottom-left {
-  position: absolute;
-  bottom: 5px;
-  left: 12px;
+  margin: 10px 20px;
 }
 
 .details-divide {
@@ -64,3 +61,6 @@ div.project img:hover {
   padding: 10px;
   background-color: #f2f1f0;;
 }
+ .small-font {
+   font-size: 16px;
+ }

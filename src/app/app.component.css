@@ -1,5 +1,5 @@
 nav {
-  background: #0B132B;
+  background: #182240;
   min-height: 36px;
   color: #f2f1f0;
   padding: 12px;
@@ -19,4 +19,17 @@ nav div a:hover {
 
 .active-link {
   color: red;
+}
+
+footer {
+  margin-top: 100px;
+  border-top: 5px solid #182240;
+  padding: 50px;
+  background-color: #e6e2dd;
+  text-align: center;
+  color: #182240;
+}
+
+footer p a {
+  text-decoration: none;
 }
