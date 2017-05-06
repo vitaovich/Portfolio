@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title }     from '@angular/platform-browser';
 
 @Component({
   selector: 'my-app',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   name = 'Vitaliy\'s site.';
+
+    public constructor(private titleService: Title ) {
+      this.titleService.setTitle('Vitaliy\'s Portfolio');
+     }
 }

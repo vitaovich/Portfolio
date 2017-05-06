@@ -1,5 +1,5 @@
 import { NgModule, enableProdMode }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -41,6 +41,7 @@ if (config.productionMode) {
   ],
   providers: [
     ProjectService,
+    Title
   ],
   bootstrap: [
     AppComponent
