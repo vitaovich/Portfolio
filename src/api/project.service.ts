@@ -5,7 +5,7 @@ import { Error } from 'mongoose';
 
 export class ProjectService {
 
-  get2 ( req: Request, res: Response ): void {
+  get ( req: Request, res: Response ): void {
     console.log('Get project: ' + req.params.idea );
     Project.findOne({ _id: req.params.id })
     .exec(function ( err, project ) {

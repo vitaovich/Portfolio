@@ -3,7 +3,7 @@ import bodyParser = require('body-parser');
 import cors = require('cors');
 let apiServer = express();
 let config = require('./config');
-// import { ProjectService } from './project.service';
+import { ProjectService } from './project.service';
 
 apiServer.use(bodyParser.json());
 apiServer.use(cors());
@@ -13,11 +13,13 @@ let router = express.Router();
 router.get('/', function (req, res) {
   res.send('Welcome to Vitaliy\'s Portfolio API!');
 });
-// router.get('/projects/:id', ProjectService.get);
-// router.get('/projects', ProjectService.getAll);
-// router.post('/projects', ProjectService.post);
-// router.put('/projects/:id', ProjectService.put);
-// router.delete('/projects/:id', ProjectService.delete);
+
+let pService = new ProjectService();
+router.get('/projects/:id', pService.get);
+router.get('/projects', pService.getAll);
+router.post('/projects', pService.post);
+router.put('/projects/:id', pService.put);
+router.delete('/projects/:id', pService.delete);
 
 apiServer.use('/api', router);
 
