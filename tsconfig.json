@@ -12,6 +12,7 @@
     "outDir": "out"
   },
   "include": [
+    "src/api/*",
     "src/*",
     "src/**/*.spec.ts"
   ]
