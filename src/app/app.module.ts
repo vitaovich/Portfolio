@@ -17,7 +17,10 @@ import { ProjectFormComponent } from './projects/project-form.component';
 import { ProjectService } from './projects/project.service';
 import { AboutComponent } from './about/about.component';
 
-
+// Enable production mode unless running locally
+if (!/localhost/.test(document.location.host)) {
+  enableProdMode();
+}
 
 @NgModule({
   imports: [
