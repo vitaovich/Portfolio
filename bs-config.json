@@ -1,9 +1,0 @@
-{
-  "server": {
-    "baseDir": "out",
-    "routes": {
-      "/node_modules": "node_modules"
-    }
-  },
-  "open": false
-}

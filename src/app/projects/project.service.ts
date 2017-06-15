@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
-const config = require('../../app.config.js');
-
 import 'rxjs/add/operator/toPromise';
 
 import { Project } from './project';
 
 @Injectable()
 export class ProjectService {
-  private projectsUrl = config.apiUrl;
+  private projectsUrl = '/api/projects';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { }
