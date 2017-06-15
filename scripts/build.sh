@@ -17,7 +17,8 @@ else
   mkdir $OUT_PATH
   echo 'Copying source html, css, js, and ico files'
   cd $SRC_PATH
-  find app -type f | grep .js | xargs -i rm {}
+  find app -type f | grep .js$ | xargs -i rm {}
+  find api -type f | grep .js$ | xargs -i rm {}
   rm main.js
   rm main.js.map
   find . -type f | grep .ico | xargs -i cp {} ../$OUT_PATH --parents
