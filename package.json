@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A Portfolio web application created by Vitaliy Alekhnovich.",
   "scripts": {
+    "build": "tsc -p src/",
     "build:aot": "scripts/build.sh",
     "build:watch": "scripts/build.sh -w",
     "build:e2e": "tsc -p e2e/",
