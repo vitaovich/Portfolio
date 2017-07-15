@@ -3,7 +3,7 @@ echo 'Building Portfolio Web App'
 SRC_PATH='./src'
 OUT_PATH='./out'
 
-if [ $1 = "-w" ];  then
+if [ "$1" = "-w" ];  then
   tsc -p src/ -w
 else
   { echo 'COMPILING USING AOT ANGULAR'; }
