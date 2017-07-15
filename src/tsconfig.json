@@ -8,12 +8,6 @@
     "experimentalDecorators": true,
     "lib": [ "es2015", "dom" ],
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "outDir": "out"
-  },
-  "include": [
-    "src/api/**/*",
-    "src/*",
-    "src/**/*spec.ts"
-  ]
+    "suppressImplicitAnyIndexErrors": true
+  }
 }

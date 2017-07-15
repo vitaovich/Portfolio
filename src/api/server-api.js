@@ -1,20 +1,20 @@
-import express = require('express');
-import bodyParser = require('body-parser');
-import cors = require('cors');
-let apiServer = express();
-let config = require('./config');
-import { ProjectService } from './project.service';
+var express = require('express');
+var bodyParser = require('body-parser');
+var cors = require('cors');
+var apiServer = express();
+var config = require('./config');
+var ProjectService = require('./project.service');
 
 apiServer.use(bodyParser.json());
 apiServer.use(cors());
 
-let router = express.Router();
+var router = express.Router();
 
 router.get('/', function (req, res) {
   res.send('Welcome to Vitaliy\'s Portfolio API!');
 });
 
-let pService = new ProjectService();
+var pService = ProjectService;
 router.get('/projects/:id', pService.get);
 router.get('/projects', pService.getAll);
 router.post('/projects', pService.post);
@@ -28,9 +28,9 @@ apiServer.listen(config.port, function() {
 });
 
 // Set up mongoose connection
-import mongoose = require('mongoose');
+var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-let mongoDB = 'mongodb://localhost:27017';
+var mongoDB = 'mongodb://localhost:27017';
 mongoose.connect(mongoDB);
-let db = mongoose.connection;
+var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));

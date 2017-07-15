@@ -1,11 +1,13 @@
-import { Schema , model } from 'mongoose';
+var mongoose = require('mongoose');
 
-let ContentSchema = new Schema({
+var Schema = mongoose.Schema;
+
+var ContentSchema = new Schema({
     type: {type: String, required: true, max: 10},
     details: {type: String}
 });
 
-let ProjectSchema = new Schema(
+var ProjectSchema = Schema(
   {
     title: {type: String, required: true, max: 100},
     icon: ContentSchema,
@@ -14,5 +16,5 @@ let ProjectSchema = new Schema(
   }
 );
 
-// Export model
-export = model('Project', ProjectSchema);
+//Export model
+module.exports = mongoose.model('Project', ProjectSchema);

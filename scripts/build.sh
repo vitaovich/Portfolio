@@ -1,34 +1,19 @@
 #!/bin/bash
 echo 'Building Portfolio Web App'
-OUT_PATH='./out'
 SRC_PATH='./src'
-
+OUT_PATH='./out'
 
 if [ $1 = "-w" ];  then
-  tsc -w
-elif [ $1 = "-s" ]; then
-  echo 'Removing previous build.'
-  rm -r $OUT_PATH
-  echo 'Linking source html, css, js, and ico files'
-  ln -s $SRC_PATH $OUT_PATH
+  tsc -p src/ -w
 else
-  echo 'Removing previous build.'
-  rm -r $OUT_PATH
-  mkdir $OUT_PATH
-  echo 'Copying source html, css, js, and ico files'
-  cd $SRC_PATH
-  find app -type f | grep .js | xargs -i rm {}
-  find api -type f | grep .js$ | xargs -i rm {}
-  find api -type f | grep .js.map$ | xargs -i rm {}
-  rm main.js
-  rm main.js.map
-  find . -type f | grep .ico | xargs -i cp {} ../$OUT_PATH --parents
-  find . -type f | grep .html | xargs -i cp {} ../$OUT_PATH --parents
-  find . -type f | grep .css | xargs -i cp {} ../$OUT_PATH --parents
-  find . -type f | grep .js | xargs -i cp {} ../$OUT_PATH --parents
-  cp -R ./assets ../$OUT_PATH/
-  cd ..
-  { echo 'COMPILING TypeScript USING'; tsc -v; }
-  tsc --diagnostics --listEmittedFiles
+  { echo 'COMPILING USING AOT ANGULAR'; }
+  node_modules/.bin/ngc -p tsconfig-aot.json
+  node_modules/.bin/rollup -c rollup-config.js
+  node copy-dist-files.js
+  find $SRC_PATH -type f | grep .ico | xargs -i cp {} ./$OUT_PATH --parents
+  find $SRC_PATH -type f | grep .css | xargs -i cp {} ./$OUT_PATH --parents
+  cp -R $SRC_PATH/api $OUT_PATH/$SRC_PATH
+  cp -R $SRC_PATH/assets $OUT_PATH/$SRC_PATH
+  cp -R $SRC_PATH/index-aot.html $OUT_PATH/$SRC_PATH/index.html
   echo 'FINISHED COMPILING.'
 fi

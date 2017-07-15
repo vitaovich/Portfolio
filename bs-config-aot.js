@@ -3,7 +3,7 @@ var fallbackMiddleware = require('connect-history-api-fallback');
 
 module.exports = {
     server: {
-        baseDir: './src',
+        baseDir: './out/src',
         routes: {
           "/node_modules": "node_modules"
         },

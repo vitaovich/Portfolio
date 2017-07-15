@@ -2,3 +2,6 @@
 node_modules/
 out/
 *.log
+package-lock.json
+src/app/**/*.js*
+src/main*.js*

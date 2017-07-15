@@ -1,22 +1,11 @@
 #!/bin/bash
 
 OUT_PATH='./out'
-# Remove test Files
-echo 'Removing spec files'
-spec_files=$( find ./out -type f | grep .spec.js )
-echo $spec_files
-rm $spec_files
-echo 'Finished removing spec files'
 
 # Replace references to node_modules with a cdn
 echo 'Replacing references of node_modules with cdn https://unpkg.com'
 sed -i 's|node_modules|https://unpkg.com|g' $OUT_PATH/index.html
 echo 'index.html replaced references'
-sed -i 's|node_modules|https://unpkg.com|g' $OUT_PATH/systemjs.config.js
-echo 'systemjs.config.js replaced references'
-echo 'enableProdMode();' >> $OUT_PATH/app/app.module.ts
-
-
 
 # Deploy everything to remote git repo
 set -x
