@@ -10,7 +10,7 @@ echo 'index.html replaced references'
 # Deploy everything to remote git repo
 set -x
 echo 'Starting deployment...'
-if [[ $TRAVIS_BRANCH -eq 'master' ]]; then
+if [[ $TRAVIS_BRANCH -eq 'master' && ! $TRAVIS_PULL_REQUEST ]]; then
     echo 'Deploying master branch'
     # Initialize a new git repo in _site, and push it to our server.
     cd out
