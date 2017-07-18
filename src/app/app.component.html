@@ -1,29 +1,26 @@
-<nav class="container-fluid">
-  <div class="row">
-    <div class="col-xs-6 col-sm-4">
-      <span class="brand">{{ name }}</span>
+<nav class="menu-container">
+  <div class="brand-container">
+    <div class="hamburger" (click)="toggleMenu()">
+      <div class="slice1" [@slice1]="isMenuActive"></div>
+      <div class="slice2" [@slice2]="isMenuActive"></div>
     </div>
-
-    <div class="col-xs-6 col-sm-4 text-align-center">
-      <a routerLink="/dashboard" routerLinkActive="active-link">Dashboard</a>
-      <a routerLink="/projects" routerLinkActive="active-link">Projects</a>
-      <a routerLink="/about" routerLinkActive="active-link">About</a>
-      <a href="/assets/vitaliy-alekhnovich-resume.pdf">Resume</a>
-    </div>
-
-    <div class="col-xs-6 col-sm-4 text-align-right">
-      <a class="nav-link" href="https://github.com/vitaovich">
-        <i class="fa fa-github" aria-hidden="true"></i> Github
-      </a>
-      <a href="https://www.linkedin.com/in/vitaliy-alekhnovich">
-        <i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn
-      </a>
-      <a href="https://travis-ci.org/vitaovich/Portfolio">
-        <img src="https://travis-ci.org/vitaovich/Portfolio.svg">
-      </a>
-    </div>
+    <span class="brand">{{ name }}</span>
   </div>
+  <a routerLink="/dashboard" routerLinkActive="active-link" [ngClass]="{'hide-element': !menuActive}">Dashboard</a>
+  <a routerLink="/projects" routerLinkActive="active-link" [ngClass]="{'hide-element': !menuActive}">Projects</a>
+  <a routerLink="/about" routerLinkActive="active-link" [ngClass]="{'hide-element': !menuActive}">About</a>
+  <a href="/assets/vitaliy-alekhnovich-resume.pdf" [ngClass]="{'hide-element': !menuActive}">Resume</a>
+  <a class="nav-link" href="https://github.com/vitaovich" [ngClass]="{'hide-element': !menuActive}">
+    <i class="fa fa-github" aria-hidden="true"></i> Github
+  </a>
+  <a href="https://www.linkedin.com/in/vitaliy-alekhnovich" [ngClass]="{'hide-element': !menuActive}">
+    <i class="fa fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+  </a>
+  <a href="https://travis-ci.org/vitaovich/Portfolio" [ngClass]="{'hide-element': !menuActive}">
+    <img src="https://travis-ci.org/vitaovich/Portfolio.svg">
+  </a>
 </nav>
+
 <router-outlet></router-outlet>
 
 <footer>
